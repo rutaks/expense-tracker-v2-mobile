@@ -8,6 +8,7 @@ export const routingConfig = {
   screens: {
     Splash: 'Splash',
     Login: 'LoginScreen',
+    Home: 'HomeScreen',
   },
   navigators: {
     Auth: 'Auth',

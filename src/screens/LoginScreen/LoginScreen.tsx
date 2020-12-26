@@ -1,3 +1,4 @@
+import {NavigationProp, StackActions} from '@react-navigation/native';
 import React, {Fragment} from 'react';
 import {
   SafeAreaView,
@@ -10,6 +11,7 @@ import {
 } from 'react-native';
 import {InputTextField} from '../../components';
 import Button from '../../components/Button';
+import {routingConfig} from '../../config/routing-config';
 import ButtonStyle from '../../enums/ButtonStyle.enum';
 import {Colors, Dimensions, Typography} from '../../styles';
 
@@ -19,7 +21,13 @@ import {Colors, Dimensions, Typography} from '../../styles';
  * @author Rutakayile Sam
  * @version 1.0
  */
-const LoginScreen = () => {
+const LoginScreen = ({navigation}: {navigation: NavigationProp<any, any>}) => {
+  const navigateToLogin = (): any => {
+    requestAnimationFrame(() => {
+      navigation.dispatch(StackActions.replace(routingConfig.navigators.Home));
+    });
+  };
+
   return (
     <Fragment>
       <StatusBar backgroundColor={Colors.PRIMARY} />
@@ -35,7 +43,11 @@ const LoginScreen = () => {
             <InputTextField icon="mail-outline" placeholder="Email" />
             <InputTextField icon="lock-outline" placeholder="Password" />
             <View style={{marginTop: Dimensions.SIZE_L}} />
-            <Button type={ButtonStyle.PRIMARY} text="LOGIN" />
+            <Button
+              onClick={navigateToLogin}
+              type={ButtonStyle.PRIMARY}
+              text="LOGIN"
+            />
             <Button text="Don't have an account?" />
           </View>
         </ScrollView>
