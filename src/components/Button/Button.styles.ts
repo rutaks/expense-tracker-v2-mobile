@@ -1,14 +1,14 @@
 import {StyleSheet} from 'react-native';
-import {Colors, Typography} from '../../styles';
+import {Colors, Dimensions, Typography} from '../../styles';
 
 export const styles = StyleSheet.create({
   button: {
-    marginHorizontal: 15,
+    marginHorizontal: Dimensions.SIZE_L,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
-    paddingVertical: 18,
-    borderRadius: 8,
+    marginTop: Dimensions.SIZE_L,
+    paddingVertical: Dimensions.SIZE_L,
+    borderRadius: Dimensions.SIZE_XS,
   },
   buttonText: {
     ...Typography.bodyHeavy,
@@ -28,5 +28,11 @@ export const styles = StyleSheet.create({
   },
   buttonLoading: {
     backgroundColor: Colors.NAVY_BLUE,
+  },
+  spinnerPrimary: {
+    backgroundColor: Colors.WHITE,
+  },
+  spinnerDefault: {
+    backgroundColor: Colors.PRIMARY,
   },
 });

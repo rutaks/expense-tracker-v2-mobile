@@ -45,7 +45,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   topHeaderImage: {
     width: Dimensions.SCREEN_WIDTH,
-    height: Dimensions.SCREEN_HEIGHT / 1.75,
-    flex: 1,
+    height: Dimensions.SCREEN_HEIGHT / 2,
+    marginBottom: Dimensions.SIZE_L,
   },
 });
