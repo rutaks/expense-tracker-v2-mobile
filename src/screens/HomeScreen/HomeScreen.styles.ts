@@ -6,6 +6,6 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     width: '100%',
     height: '100%',
-    paddingTop: Dimensions.SIZE_L * 2,
+    paddingTop: Dimensions.SIZE_L * 1.6,
   },
 });
