@@ -1,0 +1,17 @@
+export default {
+  PRIMARY: '#2059d4',
+  SECONDARY: '#FFFFFF',
+  NAVY_BLUE: '#436fcc',
+  DARK_BLUE: '#191A44',
+  GRAY: '#949BA4',
+  DARK_GRAY: '#404040',
+  LIGHT_GRAY: '#2059d4',
+  LIGHTER_GRAY: '#EBEBF4',
+  RED: '#bc0523',
+  GREEN: '#22B344',
+  BLACK: '#000000',
+  BEIGE: '#CFAFB9',
+  LIGHT_PURPLE: '#C4C4DA',
+  WHITE: '#FFF',
+  SHIMMER: ['#EBEBF4', '#DDDDE5', '#EBEBF4'],
+};
