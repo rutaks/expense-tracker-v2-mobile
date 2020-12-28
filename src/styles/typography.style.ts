@@ -6,7 +6,7 @@ export default StyleSheet.create({
   title: {
     color: Colors.BLACK,
     fontSize: Dimensions.FONT_SIZE_XL,
-    fontFamily: 'Montserrat-Black',
+    fontFamily: 'Montserrat-Bold',
   },
   subtitle: {
     fontFamily: 'Montserrat-Bold',
@@ -27,5 +27,10 @@ export default StyleSheet.create({
     fontFamily: 'Montserrat-Light',
     color: Colors.BLACK,
     fontSize: Dimensions.FONT_SIZE_SM,
+  },
+  description: {
+    fontFamily: 'Montserrat-Regular',
+    color: Colors.BLACK,
+    fontSize: Dimensions.FONT_SIZE_M,
   },
 });
