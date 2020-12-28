@@ -1,7 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
-import {CurrentBalanceArea, HomeTopBar} from '../../components';
-import {Colors} from '../../styles';
+import {SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {
+  CurrentBalanceArea,
+  HomeTopBar,
+  TransactionList,
+} from '../../components';
+import {Colors, Dimensions, Typography} from '../../styles';
 import {styles} from './HomeScreen.styles';
 
 /**
@@ -17,11 +21,15 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <HomeTopBar />
         <CurrentBalanceArea />
-        {/* <View
+        <View
           style={{
-            paddingLeft: Dimensions.SIZE_L,
-            paddingRight: Dimensions.SIZE_L,
-          }}></View> */}
+            paddingLeft: Dimensions.SIZE_M,
+            marginTop: Dimensions.SIZE_XL * 1.4,
+            marginBottom: Dimensions.SIZE_L,
+          }}>
+          <Text style={{...Typography.title}}>Your transactions</Text>
+        </View>
+        <TransactionList />
       </View>
     </SafeAreaView>
   );
