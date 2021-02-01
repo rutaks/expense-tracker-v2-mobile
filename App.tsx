@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import AnimatedSplash from 'react-native-animated-splash-screen';
-import {LoginScreen, SplashScreen} from './src/screens';
+import {AppNavigator} from './src/navigators';
+import {SplashScreen} from './src/screens';
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,7 +33,7 @@ const App = () => {
             logoImage={require('./assets/img/logo-main.png')}
             logoHeight={150}
             logoWidth={150}>
-            <LoginScreen />
+            <AppNavigator />
           </AnimatedSplash>
         </Fragment>
       )}

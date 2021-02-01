@@ -1,13 +1,18 @@
 import React, {Fragment, useState} from 'react';
-import {StyleSheet, View, StatusBar, Image} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import Spinner from 'react-native-spinkit';
 
+/**
+ * Function component representing app's splash screen
+ * @param props
+ * @author Rutakayile Sam
+ * @version 1.0
+ */
 const SplashScreen = () => {
   const [isLoading] = useState(true);
 
   return (
     <Fragment>
-      <StatusBar backgroundColor="#2059d4" />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

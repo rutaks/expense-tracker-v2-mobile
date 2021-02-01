@@ -10,11 +10,23 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.6",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-animated-splash-screen": "^2.0.5",
+    "react-native-awesome-loading": "^1.0.15",
+    "react-native-calendars": "^1.1209.0",
+    "react-native-fast-image": "^8.3.4",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-modalize": "^2.0.8",
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "^2.16.1",
     "react-native-spinkit": "^1.5.1",
-    "react-native-vector-icons": "^7.1.0"
+    "react-native-vector-icons": "^7.1.0",
+    "toggle-switch-react-native": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -22,6 +34,8 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-calendars": "^1.505.0",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",

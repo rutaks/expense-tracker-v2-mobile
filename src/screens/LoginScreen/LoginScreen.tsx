@@ -1,55 +1,55 @@
+import {NavigationProp, StackActions} from '@react-navigation/native';
 import React, {Fragment} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
   Image,
-  Dimensions,
-  TextInput,
-  TouchableOpacity,
+  Text,
+  View,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {InputTextField} from '../../components';
+import Button from '../../components/Button';
+import {routingConfig} from '../../config/routing-config';
+import ButtonStyle from '../../enums/ButtonStyle.enum';
+import {Colors, Dimensions, Typography} from '../../styles';
 
-const LoginScreen = () => {
+/**
+ * Function component representing app's navigation tree head
+ * @param props
+ * @author Rutakayile Sam
+ * @version 1.0
+ */
+const LoginScreen = ({navigation}: {navigation: NavigationProp<any, any>}) => {
+  const navigateToLogin = (): any => {
+    requestAnimationFrame(() => {
+      navigation.dispatch(StackActions.replace(routingConfig.navigators.Home));
+    });
+  };
+
   return (
     <Fragment>
-      <StatusBar backgroundColor="#2059d4" />
-      <SafeAreaView>
+      <StatusBar backgroundColor={Colors.PRIMARY} />
+      <SafeAreaView style={{backgroundColor: Colors.WHITE}}>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Image
-            style={styles.topHeaderImage}
-            source={require('../../../assets/img/login-cover.png')}
-            resizeMode="cover"
-          />
-          <View style={styles.inputText}>
-            <MaterialIcons name="mail-outline" color="#2059d4" size={22} />
-            <TextInput
-              placeholder="Email"
-              style={{color: '#2059d4', flex: 1}}
+          <View style={{paddingBottom: Dimensions.SIZE_XL * 2}}>
+            <Image
+              style={styles.topHeaderImage}
+              source={require('../../../assets/img/login-cover.png')}
+              resizeMode="cover"
             />
-            <MaterialIcons name="check" color="#2059d4" size={22} />
-          </View>
-          <View style={styles.inputTextError}>
-            <MaterialIcons name="lock-outline" color="#bc0523" size={22} />
-            <TextInput
-              placeholder="Password"
-              style={{color: '#bc0523', flex: 1}}
+            <Text style={styles.heading}>Login in to continue</Text>
+            <InputTextField icon="mail-outline" placeholder="Email" />
+            <InputTextField icon="lock-outline" placeholder="Password" />
+            <View style={{marginTop: Dimensions.SIZE_L}} />
+            <Button
+              onClick={navigateToLogin}
+              type={ButtonStyle.PRIMARY}
+              text="LOGIN"
             />
-            <MaterialIcons name="close" color="#bc0523" size={22} />
+            <Button text="Don't have an account?" />
           </View>
-
-          <TouchableOpacity style={styles.button}>
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'SemiBold',
-              }}>
-              Login
-            </Text>
-          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </Fragment>
@@ -58,54 +58,11 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
-const {width, height} = Dimensions.get('window');
-
 const styles = StyleSheet.create({
-  logoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    width: 140,
-    height: 140,
-  },
-  button: {
-    marginHorizontal: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    backgroundColor: '#2059d4',
-    paddingVertical: 18,
-    borderRadius: 8,
-  },
+  heading: {...Typography.subtitle, paddingLeft: Dimensions.SIZE_L},
   topHeaderImage: {
-    width: width,
-    height: height / 1.75,
-    flex: 1,
-  },
-  inputText: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 15,
-    borderBottomWidth: 2,
-    marginTop: 25,
-    paddingHorizontal: 10,
-    borderColor: '#2059d4',
-    borderRadius: 1,
-    paddingVertical: 2,
-  },
-  inputTextError: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 15,
-    borderBottomWidth: 2,
-    marginTop: 25,
-    paddingHorizontal: 10,
-    borderColor: '#bc0523',
-    borderRadius: 1,
-    paddingVertical: 2,
+    width: Dimensions.SCREEN_WIDTH,
+    height: Dimensions.SCREEN_HEIGHT / 1.85,
+    marginBottom: Dimensions.SIZE_L,
   },
 });
