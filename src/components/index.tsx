@@ -9,3 +9,4 @@ export {default as FinancialRecordModal} from './FinancialRecordModal';
 export {default as AmountInputField} from './AmountInputField';
 export {default as DateField} from './DateField';
 export {default as ExpenseOrIncomeToggle} from './ExpenseOrIncomeToggle';
+export {default as CalendarView} from './CalendarView';
