@@ -65,7 +65,7 @@ const Button = ({
 }: {
   text?: string;
   type?: ButtonStyle;
-  onClick?: (event: GestureResponderEvent) => {};
+  onClick?: (event: GestureResponderEvent) => any;
   isLoading?: boolean;
   buttonStyle?: any;
 }) => {
