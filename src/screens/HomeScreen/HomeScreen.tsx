@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {SafeAreaView, StatusBar, Text, View} from 'react-native';
 import {
   CurrentBalanceArea,
+  FinancialRecordModal,
   HomeTopBar,
   TransactionList,
 } from '../../components';
@@ -15,11 +16,19 @@ import {styles} from './HomeScreen.styles';
  * @version 1.0
  */
 const HomeScreen = () => {
+  const financialRecordModalRef: any = createRef();
+
+  const openFinancialRecordModal = () => {
+    if (financialRecordModalRef) {
+      financialRecordModalRef.current?.open();
+    }
+  };
+
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={Colors.PRIMARY} />
       <View style={styles.container}>
-        <HomeTopBar />
+        <HomeTopBar openFinancialRecordModal={openFinancialRecordModal} />
         <CurrentBalanceArea />
         <View
           style={{
@@ -31,6 +40,7 @@ const HomeScreen = () => {
         </View>
         <TransactionList />
       </View>
+      <FinancialRecordModal ref={financialRecordModalRef} />
     </SafeAreaView>
   );
 };

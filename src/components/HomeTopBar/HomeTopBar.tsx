@@ -10,7 +10,11 @@ import {styles} from './HomeTopBar.styles';
  * @author Rutakayile Sam
  * @version 1.0
  */
-const HomeTopBar = () => {
+const HomeTopBar = ({
+  openFinancialRecordModal,
+}: {
+  openFinancialRecordModal: () => any;
+}) => {
   return (
     <View style={styles.container}>
       <IconButton icon="questioncircleo" />
@@ -23,7 +27,11 @@ const HomeTopBar = () => {
         source={require('../../../assets/img/logo-main.png')}
         resizeMode="cover"
       />
-      <IconButton icon="pluscircle" color={Colors.PRIMARY} />
+      <IconButton
+        onTap={() => openFinancialRecordModal()}
+        icon="pluscircle"
+        color={Colors.PRIMARY}
+      />
     </View>
   );
 };
