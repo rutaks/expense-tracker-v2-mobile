@@ -1,3 +1,5 @@
+import {StyleProp, ViewStyle} from 'react-native';
+
 export interface IconButtonProps {
   /**
    * Icon type displayed on the left side of component
@@ -11,4 +13,8 @@ export interface IconButtonProps {
    * Determines color of button
    */
   color?: string;
+
+  containerStyle?: StyleProp<ViewStyle>;
+
+  iconSize?: number;
 }

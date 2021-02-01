@@ -15,12 +15,12 @@ const IconButton = (props: IconButtonProps) => {
   return (
     <View>
       <TouchableOpacity
-        style={styles.container}
+        style={[styles.container, props.containerStyle]}
         onPress={props.onTap}
         activeOpacity={0.6}>
         <AntDesign
           name={props.icon}
-          size={Dimensions.SIZE_XL}
+          size={props.iconSize || Dimensions.SIZE_XL}
           color={props?.color || Colors.GRAY}
         />
       </TouchableOpacity>
