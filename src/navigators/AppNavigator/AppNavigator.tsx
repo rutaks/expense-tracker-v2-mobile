@@ -2,7 +2,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {routingConfig} from '../../config/routing-config';
-import {AuthNavigator, HomeNavigator} from '..';
+import {HomeNavigator} from '..';
+import {useDbConnectionSetup} from './AppNavigator.hooks';
 
 const Stack = createStackNavigator();
 
@@ -13,13 +14,19 @@ const Stack = createStackNavigator();
  * @version 1.0
  */
 const AppNavigator = () => {
+  const {connection} = useDbConnectionSetup();
+
+  if (!connection) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen
+        {/* <Stack.Screen
           name={routingConfig.navigators.Auth}
           component={AuthNavigator}
-        />
+        /> */}
         <Stack.Screen
           name={routingConfig.navigators.Home}
           component={HomeNavigator}
