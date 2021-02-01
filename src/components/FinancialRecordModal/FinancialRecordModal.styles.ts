@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors, Dimensions} from '../../styles';
+import {Colors, Dimensions, Typography} from '../../styles';
 
 export const styles = StyleSheet.create({
   actionSheet: {backgroundColor: 'transparent'},
@@ -24,13 +24,15 @@ export const styles = StyleSheet.create({
     paddingBottom: Dimensions.SIZE_XL,
   },
   notesField: {
+    ...Typography.description,
     backgroundColor: Colors.WHITE,
     marginTop: Dimensions.FONT_SIZE_M,
     marginBottom: Dimensions.FONT_SIZE_M,
     paddingBottom: Dimensions.FONT_SIZE_M * 10,
     paddingLeft: Dimensions.FONT_SIZE_M,
-    borderColor: Colors.LIGHT_GRAY,
+    borderColor: Colors.LIGHTER_BLUE,
     borderWidth: Dimensions.SIZE_XS / 6,
+    borderRadius: Dimensions.SIZE_M,
   },
   moreDetails: {
     backgroundColor: Colors.LIGHTER_GRAY,

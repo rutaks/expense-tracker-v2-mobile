@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: Dimensions.SIZE_XS / 6,
     borderRadius: Dimensions.SIZE_M,
-    borderColor: Colors.LIGHT_BLUE,
+    borderColor: Colors.LIGHTER_BLUE,
     backgroundColor: Colors.WHITE,
     paddingLeft: Dimensions.SIZE_L,
     paddingRight: Dimensions.SIZE_L,

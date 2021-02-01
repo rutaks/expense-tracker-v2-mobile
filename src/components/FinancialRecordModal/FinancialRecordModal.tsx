@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {Fragment, useCallback, useState} from 'react';
 import {View, Text, ScrollView, TextInput} from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import {Colors, Common} from '../../styles';
-import {AmountInputField} from '../../components';
+import {AmountInputField, CalendarView} from '../../components';
 import {styles} from './FinancialRecordModal.styles';
 import Button from '../Button';
 import ButtonStyle from '../../enums/ButtonStyle.enum';
@@ -18,39 +18,64 @@ import ExpenseOrIncomeToggle from '../ExpenseOrIncomeToggle';
  */
 const FinancialRecordModal = React.forwardRef((props: any, ref: any) => {
   const [isIncome, setIsIncome] = useState(false);
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  /**
+   * closes action sheet
+   */
+  const closeCreatePlanActionSheet = useCallback(() => {
+    if (ref) {
+      ref.current?.close();
+    }
+  }, [ref]);
 
   return (
     <Modalize ref={ref}>
       <ScrollView style={styles.sheet}>
-        <View style={Common.alignedRow}>
-          <Text style={Common.primaryHeading}>Add Expense</Text>
-          <IconButton
-            icon="close"
-            color={Colors.BLACK}
-            containerStyle={styles.closeButton}
-          />
-        </View>
-        <AmountInputField
-          keyboardType="decimal-pad"
-          label="Amount"
-          icon="payments"
-          placeholder="Enter amount"
+        {!isCalendarVisible && (
+          <Fragment>
+            <View style={Common.alignedRow}>
+              <Text style={Common.primaryHeading}>Add Expense</Text>
+              <IconButton
+                icon="close"
+                color={Colors.BLACK}
+                containerStyle={styles.closeButton}
+                onTap={() => closeCreatePlanActionSheet()}
+              />
+            </View>
+            <AmountInputField
+              keyboardType="decimal-pad"
+              label="Amount"
+              icon="payments"
+              placeholder="Enter amount"
+            />
+            <View style={styles.dateRow}>
+              <DateField
+                date={selectedDate}
+                onPressOut={() => setIsCalendarVisible(true)}
+              />
+            </View>
+            <View style={styles.moreDetails}>
+              <ExpenseOrIncomeToggle
+                isIncome={isIncome}
+                setIsIncome={setIsIncome}
+              />
+              <TextInput
+                numberOfLines={2}
+                placeholder="Additional info..."
+                placeholderTextColor={Colors.LIGHT_BLUE}
+                style={styles.notesField}
+              />
+            </View>
+            <Button type={ButtonStyle.PRIMARY} text="Proceed" />
+          </Fragment>
+        )}
+        <CalendarView
+          isVisible={isCalendarVisible}
+          onHideCalendar={() => setIsCalendarVisible(false)}
+          onSetDate={(date) => setSelectedDate(date)}
         />
-        <View style={styles.dateRow}>
-          <DateField />
-        </View>
-        <View style={styles.moreDetails}>
-          <ExpenseOrIncomeToggle
-            isIncome={isIncome}
-            setIsIncome={setIsIncome}
-          />
-          <TextInput
-            numberOfLines={2}
-            placeholder="Notes..."
-            style={styles.notesField}
-          />
-        </View>
-        <Button type={ButtonStyle.PRIMARY} text="Proceed" />
       </ScrollView>
     </Modalize>
   );

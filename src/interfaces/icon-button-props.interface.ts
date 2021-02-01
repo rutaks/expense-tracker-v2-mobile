@@ -8,7 +8,7 @@ export interface IconButtonProps {
   /**
    * Triggers a desired action when component tapped
    */
-  onTap?: () => {};
+  onTap?: () => any;
   /**
    * Determines color of button
    */
