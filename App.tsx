@@ -1,43 +1,34 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import AnimatedSplash from 'react-native-animated-splash-screen';
-import {AppNavigator} from './src/navigators';
-import {SplashScreen} from './src/screens';
+import React, {useEffect, useState} from 'react';
+import {OnBoardedNavigator} from './src/navigators';
+import {OnBoardingScreen} from './src/screens';
+import {
+  getHasViewedOnboardingScreen,
+  storeHasViewedOnboardingScreen,
+} from './src/utils/storage.util';
 
 const App = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isSplashLoaded, setIsSplashLoaded] = useState(false);
+  const [hasViewedOnboarding, setHasViewedOnboarding] = useState<boolean>();
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 5000);
-  });
+    const checkHasViewedOnBoarding = async () => {
+      setHasViewedOnboarding(await getHasViewedOnboardingScreen());
+    };
+    checkHasViewedOnBoarding();
+  }, []);
 
-  useEffect(() => {
-    if (isLoaded) {
-      setTimeout(() => {
-        setIsSplashLoaded(true);
-      }, 1500);
-    }
-  }, [isLoaded]);
+  const changeHasViewedOnboarding = () => {
+    storeHasViewedOnboardingScreen(true);
+    setHasViewedOnboarding(true);
+  };
 
-  return (
-    <Fragment>
-      {!isLoaded ? (
-        <SplashScreen />
-      ) : (
-        <Fragment>
-          <AnimatedSplash
-            translucent={true}
-            isLoaded={isSplashLoaded}
-            logoImage={require('./assets/img/logo-main.png')}
-            logoHeight={150}
-            logoWidth={150}>
-            <AppNavigator />
-          </AnimatedSplash>
-        </Fragment>
-      )}
-    </Fragment>
+  if (hasViewedOnboarding === null) {
+    return null;
+  }
+
+  return hasViewedOnboarding ? (
+    <OnBoardedNavigator />
+  ) : (
+    <OnBoardingScreen onDone={changeHasViewedOnboarding} />
   );
 };
 
