@@ -39,6 +39,7 @@ const TransactionList = (props: {
       }}>
       <FlatList
         data={props?.items}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={({index, item}) => (
           <TransactionListItem item={item} key={index} />
         )}
