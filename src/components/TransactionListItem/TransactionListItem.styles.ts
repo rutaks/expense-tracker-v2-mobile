@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   date: {...Typography.body, marginTop: Dimensions.SIZE_XS / 2},
   amount: {
-    ...Typography.body,
+    ...Typography.subtitle,
     color: Colors.BLACK,
   },
   expense: {

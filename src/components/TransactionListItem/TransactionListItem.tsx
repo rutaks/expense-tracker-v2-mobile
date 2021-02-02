@@ -11,14 +11,6 @@ const TransactionListItem = (props: {item: FinancialRecord}) => {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.row}>
-        <Text style={{...Typography.description, color: Colors.BLACK}}>
-          {props.item.description}
-        </Text>
-        <View style={styles.tag}>
-          <Text style={{...Typography.body}}>{'No Tag'}</Text>
-        </View>
-      </View>
-      <View style={styles.row}>
         <Text
           style={[
             styles.amount,
@@ -26,6 +18,15 @@ const TransactionListItem = (props: {item: FinancialRecord}) => {
           ]}>
           RWF {props?.item?.type === EXPENSE ? '-' : '+'}
           {props.item.amount}
+        </Text>
+
+        {/* <View style={styles.tag}>
+          <Text style={{...Typography.body}}>{'No Tag'}</Text>
+        </View> */}
+      </View>
+      <View style={styles.row}>
+        <Text style={{...Typography.description, color: Colors.BLACK}}>
+          {props.item.description || 'No description'}
         </Text>
         <Text style={styles.date}>June 11, 2020</Text>
       </View>
