@@ -36,7 +36,7 @@ const HomeScreen = () => {
       <StatusBar backgroundColor={Colors.PRIMARY} />
       <View style={styles.container}>
         <HomeTopBar openFinancialRecordModal={openFinancialRecordModal} />
-        <CurrentBalanceArea />
+        <CurrentBalanceArea items={financialRecordListHook.financialRecords} />
         <View
           style={{
             paddingLeft: Dimensions.SIZE_M,
