@@ -17,4 +17,16 @@ export default class FinancialRecord {
 
   @Column()
   occurredOn: Date;
+
+  constructor(data?: {
+    description?: string;
+    amount?: number;
+    type?: FinancialRecordType;
+    occurredOn?: Date;
+  }) {
+    this.amount = data?.amount;
+    this.description = data?.description;
+    this.type = data?.type;
+    this.occurredOn = data?.occurredOn;
+  }
 }

@@ -29,6 +29,7 @@ const AmountInputField = ({
   onSubmitEditing,
   placeholder = '',
   error,
+  onChange,
   ...rest
 }: FormTextInputProps): JSX.Element => {
   const [isFocused, setIsFocused] = useState(false);
@@ -47,7 +48,10 @@ const AmountInputField = ({
           value={numberWithCommas(actualAmount)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          onChangeText={(value: any) => setActualAmount(convertToNumber(value))}
+          onChangeText={(value: any) => {
+            setActualAmount(convertToNumber(value));
+            onChange(convertToNumber(value));
+          }}
           onSubmitEditing={onSubmitEditing}
           placeholder={placeholder}
           placeholderTextColor={error ? Colors.RED : Colors.LIGHT_BLUE}

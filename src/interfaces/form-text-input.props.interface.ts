@@ -8,4 +8,5 @@ export interface FormTextInputProps extends TextInputProps {
   placeholder?: string;
   error?: any;
   textContainerStyle?: any;
+  onChange: (value: any) => any;
 }

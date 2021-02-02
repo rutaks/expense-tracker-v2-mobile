@@ -6,6 +6,9 @@ export type FinancialRecordListContextType = {
   findAllFinancialRecords?: () => any;
   isLoadingInitially?: boolean;
   setFinancialRecords?: React.Dispatch<React.SetStateAction<FinancialRecord[]>>;
+  addRecord?: (record: FinancialRecord) => any;
+  isAddingSuccess?: boolean;
+  setIsAddingSuccess?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const FinancialRecordListContext = React.createContext<

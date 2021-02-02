@@ -12,6 +12,7 @@ const FinancialRecordListProvider = ({children}) => {
     FinancialRecord[] | null
   >();
   const [isLoadingInitially, setIsLoadingInitially] = useState(false);
+  const [isAddingSuccess, setIsAddingSuccess] = useState(false);
 
   /**
    * Retreives all financial records in db
@@ -23,11 +24,25 @@ const FinancialRecordListProvider = ({children}) => {
     setIsLoadingInitially(false);
   };
 
+  /**
+   * Adds finacial record to record list
+   * @param record
+   */
+  const addRecord = async (record: FinancialRecord) => {
+    await FinancialRecordDal.create(record);
+    setFinancialRecords((recordArr) => [record, ...recordArr]);
+    setIsAddingSuccess(true);
+    setIsAddingSuccess(false);
+  };
+
   const contextValue = {
     financialRecords,
     findAllFinancialRecords,
     isLoadingInitially,
     setFinancialRecords,
+    addRecord,
+    isAddingSuccess,
+    setIsAddingSuccess,
   };
 
   return (
