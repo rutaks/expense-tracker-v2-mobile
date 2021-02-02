@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {createRef, useEffect} from 'react';
 import {SafeAreaView, StatusBar, Text, View} from 'react-native';
 import {
   CurrentBalanceArea,
@@ -6,6 +6,7 @@ import {
   HomeTopBar,
   TransactionList,
 } from '../../components';
+import {useFinancialRecordList} from '../../context/FinancialRecordList';
 import {Colors, Dimensions, Typography} from '../../styles';
 import {styles} from './HomeScreen.styles';
 
@@ -17,6 +18,12 @@ import {styles} from './HomeScreen.styles';
  */
 const HomeScreen = () => {
   const financialRecordModalRef: any = createRef();
+  const financialRecordListHook = useFinancialRecordList();
+
+  useEffect(() => {
+    financialRecordListHook.findAllFinancialRecords();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const openFinancialRecordModal = () => {
     if (financialRecordModalRef) {
@@ -38,7 +45,10 @@ const HomeScreen = () => {
           }}>
           <Text style={{...Typography.title}}>Your transactions</Text>
         </View>
-        <TransactionList />
+        <TransactionList
+          loading={financialRecordListHook.isLoadingInitially}
+          items={financialRecordListHook.financialRecords}
+        />
       </View>
       <FinancialRecordModal ref={financialRecordModalRef} />
     </SafeAreaView>

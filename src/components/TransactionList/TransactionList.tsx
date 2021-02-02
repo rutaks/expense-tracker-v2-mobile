@@ -1,34 +1,36 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
 import {TransactionListItem} from '..';
-import FinancialRecordType from '../../enums/financial-record-type.enum';
 import FinancialRecord from '../../models/financial-record.model';
 import {Dimensions} from '../../styles';
+import DataLoadingView from '../DataLoadingView';
+import NoDataView from '../NoDataView';
 
-const data: FinancialRecord[] = [
-  {
-    description: 'Description',
-    amount: 12000,
-    type: FinancialRecordType.EXPENSE,
-  },
-  {
-    description: 'Description',
-    amount: 12000,
-    type: FinancialRecordType.INCOME,
-  },
-  {
-    description: 'Description',
-    amount: 12000,
-    type: FinancialRecordType.EXPENSE,
-  },
-  {
-    description: 'Description',
-    amount: 12000,
-    type: FinancialRecordType.EXPENSE,
-  },
-];
+/**
+ * Function component representing transaction list
+ * @param props
+ * @author Rutakayile Sam
+ * @version 1.0
+ */
+const TransactionList = (props: {
+  items?: FinancialRecord[];
+  loading: boolean;
+}) => {
+  if (props?.loading) {
+    return (
+      <DataLoadingView title="Loading..." text="Swapping time and space..." />
+    );
+  }
 
-const TransactionList = () => {
+  if (!props.items || props.items?.length < 1) {
+    return (
+      <NoDataView
+        title="No Records found"
+        text="It seems like you do not have any record registered yet"
+      />
+    );
+  }
+
   return (
     <View
       style={{
@@ -36,7 +38,7 @@ const TransactionList = () => {
         paddingRight: Dimensions.SIZE_L,
       }}>
       <FlatList
-        data={data}
+        data={props?.items}
         renderItem={({index, item}) => (
           <TransactionListItem item={item} key={index} />
         )}
