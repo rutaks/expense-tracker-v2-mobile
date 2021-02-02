@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from '../../screens';
 import {routingConfig} from '../../config/routing-config';
+import {FinancialRecordListProvider} from '../../context/FinancialRecordList';
 
 const Stack = createStackNavigator();
 
@@ -13,9 +14,14 @@ const Stack = createStackNavigator();
  */
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen name={routingConfig.screens.Home} component={HomeScreen} />
-    </Stack.Navigator>
+    <FinancialRecordListProvider>
+      <Stack.Navigator headerMode="none">
+        <Stack.Screen
+          name={routingConfig.screens.Home}
+          component={HomeScreen}
+        />
+      </Stack.Navigator>
+    </FinancialRecordListProvider>
   );
 };
 

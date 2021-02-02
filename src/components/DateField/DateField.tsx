@@ -6,7 +6,6 @@ import {toCustomDateFormat} from '../../utils/formatting.util';
 import {styles} from './DateField.styles';
 
 const DateField = (props: {date: Date; onPressOut?: () => any}) => {
-  console.log(props);
   return (
     <TouchableOpacity onPressOut={props.onPressOut} style={styles.row}>
       <Text style={styles.dateText}>

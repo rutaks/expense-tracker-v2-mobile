@@ -1,4 +1,5 @@
-import {createConnection} from 'typeorm';
+import {createConnection} from 'typeorm/browser';
+import FinancialRecord from '../models/financial-record.model';
 
 /**
  * Sets up connection with local database
@@ -11,7 +12,7 @@ export const getConnection = async (): Promise<any> => {
       location: 'default',
       logging: ['error', 'query', 'schema'],
       synchronize: true,
-      entities: [],
+      entities: [FinancialRecord],
     });
     return connection;
   } catch (error) {
