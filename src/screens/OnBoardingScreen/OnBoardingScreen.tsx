@@ -8,19 +8,19 @@ const data = [
   {
     title: 'Welcome to Wove.\n Your next financial assistant',
     text: "We are glad you're giving us a try.\nYou won't regret it",
-    image: require('../../../assets/img/onboarding/1.png'),
+    image: require('../../../assets/img/onboarding/onboarding-1.png'),
     bg: Colors.PRIMARY,
   },
   {
-    title: 'Title 2',
-    text: 'Other cool stuff',
-    image: require('../../../assets/img/onboarding/1.png'),
+    title: 'Keep track of your daily spending',
+    text: 'Log your regular expenses & income\n\nNever forget them again',
+    image: require('../../../assets/img/onboarding/onboarding-2.png'),
     bg: Colors.DARK_GRAY,
   },
   {
-    title: 'Rocket guy',
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require('../../../assets/img/onboarding/1.png'),
+    title: 'View all your previous records',
+    text: 'Get a comprehensive view of \n\nyour spending & income history',
+    image: require('../../../assets/img/onboarding/onboarding-3.png'),
     bg: Colors.PRIMARY,
   },
 ];
