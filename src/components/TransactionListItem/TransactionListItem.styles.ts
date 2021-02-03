@@ -19,7 +19,16 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'column',
   },
-  date: {...Typography.body, marginTop: Dimensions.SIZE_XS / 2},
+  description: {
+    ...Typography.description,
+    color: Colors.BLACK,
+    alignSelf: 'flex-end',
+  },
+  date: {
+    ...Typography.body,
+    marginTop: Dimensions.SIZE_XS / 2,
+    alignSelf: 'flex-end',
+  },
   amount: {
     ...Typography.subtitle,
     color: Colors.BLACK,
