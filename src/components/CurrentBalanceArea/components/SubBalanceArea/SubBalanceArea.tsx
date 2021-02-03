@@ -10,7 +10,7 @@ import {styles} from './SubBalanceArea.styles';
  */
 const SubBalanceArea = (props: {title: string; amount: string}) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.heading}>{props.title}</Text>
       <Text style={styles.amount}>RWF {props.amount}</Text>
     </View>

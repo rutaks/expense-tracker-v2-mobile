@@ -8,8 +8,10 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.LIGHTER_GRAY,
   },
   currentBalanceContainer: {
+    flex: 1,
     flexDirection: 'column',
-    paddingTop: Dimensions.SIZE_M * 2.5,
+    paddingTop: Dimensions.SIZE_M,
+    paddingBottom: Dimensions.SIZE_M,
   },
   currentBalanceHeading: {
     ...Typography.body,
@@ -19,7 +21,6 @@ export const styles = StyleSheet.create({
   currentBalanceAmout: {
     ...Typography.label,
     fontSize: Dimensions.FONT_SIZE_XL * 1.5,
-    paddingTop: Dimensions.SIZE_SM,
   },
   subBalanceArea: {
     flexDirection: 'column',

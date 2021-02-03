@@ -1,5 +1,6 @@
 import {getRepository} from 'typeorm/browser';
 import FinancialRecord from '../models/financial-record.model';
+import {sortByDueDate} from '../utils/date.util';
 
 /**
  * Class representing Farmer dabase access layer
@@ -10,7 +11,8 @@ class FinancialRecordDal {
    */
   static async findAll(): Promise<FinancialRecord[]> {
     const repo = getRepository(FinancialRecord);
-    return await repo.find({});
+    const res = await repo.find({});
+    return sortByDueDate(res);
   }
 
   /**

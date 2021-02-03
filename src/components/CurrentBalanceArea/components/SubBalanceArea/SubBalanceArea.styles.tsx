@@ -3,9 +3,8 @@ import {Colors, Dimensions, Typography} from '../../../../styles';
 
 export const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flex: 1,
     alignItems: 'flex-end',
-    paddingTop: Dimensions.SIZE_M * 1.2,
   },
   heading: {
     ...Typography.body,

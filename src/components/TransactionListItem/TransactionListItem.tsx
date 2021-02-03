@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import FinancialRecordType from '../../enums/financial-record-type.enum';
 import FinancialRecord from '../../models/financial-record.model';
-import {Colors, Typography} from '../../styles';
 import {styles} from './TransactionListItem.styles';
 
 const TransactionListItem = (props: {item: FinancialRecord}) => {
@@ -25,7 +24,7 @@ const TransactionListItem = (props: {item: FinancialRecord}) => {
         </View> */}
       </View>
       <View style={styles.row}>
-        <Text style={{...Typography.description, color: Colors.BLACK}}>
+        <Text style={styles.description}>
           {props.item.description || 'No description'}
         </Text>
         <Text style={styles.date}>June 11, 2020</Text>
