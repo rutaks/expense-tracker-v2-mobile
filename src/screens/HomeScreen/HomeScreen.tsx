@@ -45,10 +45,12 @@ const HomeScreen = () => {
           }}>
           <Text style={{...Typography.title}}>Your transactions</Text>
         </View>
+        {/* <View style={{paddingBottom: Dimensions.SIZE_L}}> */}
         <TransactionList
           loading={financialRecordListHook.isLoadingInitially}
           items={financialRecordListHook.financialRecords}
         />
+        {/* </View> */}
       </View>
       <FinancialRecordModal ref={financialRecordModalRef} />
     </SafeAreaView>

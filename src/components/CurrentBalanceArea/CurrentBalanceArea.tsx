@@ -7,7 +7,7 @@ import {
   getIncomeSum,
   getTotalAmount,
 } from '../../utils/financial-record.util';
-import {numberWithCommas} from '../../utils/formatting.util';
+import {formatToRoundedNum} from '../../utils/formatting.util';
 import {SubBalanceArea} from './components';
 import {styles} from './CurrentBalanceArea.styles';
 
@@ -38,18 +38,18 @@ const CurrentBalanceArea = (props: {items: FinancialRecord[]}) => {
           RWF
         </Text>
         <Text style={styles.currentBalanceAmout}>
-          {numberWithCommas(getTotalAmount(props?.items)?.toString())}
+          {formatToRoundedNum(getTotalAmount(props?.items))}
         </Text>
       </View>
       <View style={styles.subBalanceArea}>
         <SubBalanceArea
           title="Income"
-          amount={numberWithCommas(getIncomeSum(props?.items)?.toString())}
+          amount={formatToRoundedNum(getIncomeSum(props?.items))}
         />
         <View style={{paddingTop: Dimensions.SIZE_M}} />
         <SubBalanceArea
           title="Expense"
-          amount={numberWithCommas(getExpenseSum(props?.items)?.toString())}
+          amount={formatToRoundedNum(getExpenseSum(props?.items))}
         />
       </View>
     </View>

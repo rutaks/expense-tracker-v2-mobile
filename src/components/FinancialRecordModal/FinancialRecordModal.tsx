@@ -44,7 +44,6 @@ const validationSchema = Yup.object().shape({
 const FinancialRecordModal = React.forwardRef((props: any, ref: any) => {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const financialRecordListHook = useFinancialRecordList();
-  // financialRecordListHook.
 
   /**
    * closes action sheet
@@ -85,9 +84,11 @@ const FinancialRecordModal = React.forwardRef((props: any, ref: any) => {
                         onTap={() => closeCreatePlanActionSheet()}
                       />
                     </View>
+                    {console.log(formikProps.values.amount)}
                     <AmountInputField
                       keyboardType="decimal-pad"
                       label="Amount"
+                      defaultValue={formikProps.values.amount}
                       icon="payments"
                       placeholder="Enter amount"
                       error={getFormikError(formikProps, 'amount')}
@@ -131,6 +132,7 @@ const FinancialRecordModal = React.forwardRef((props: any, ref: any) => {
                       />
                     </View>
                     <Button
+                      isLoading={financialRecordListHook.isAddingLoading}
                       type={ButtonStyle.PRIMARY}
                       text="Proceed"
                       onClick={(_): any => formikProps.handleSubmit()}

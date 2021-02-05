@@ -1,31 +1,46 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import ToggleSwitch from 'toggle-switch-react-native';
-import {Colors, Dimensions, Typography} from '../../styles';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions} from '../../styles';
 import {styles} from './ExpenseOrIncomeToggle.styles';
 
 const ExpenseOrIncomeToggle = (props: {
+  error?: string;
   isIncome?: boolean;
   setIsIncome: (val: boolean) => any;
 }) => {
+  const getContainerStyle = (check: boolean) => {
+    return check ? styles.selectedContainer : styles.unSelectedContainer;
+  };
+
+  const getTextStyle = (check: boolean) => {
+    return check ? styles.selectedText : styles.unSelectedText;
+  };
   return (
     <View style={styles.container}>
-      <Text
+      <TouchableOpacity
         style={{
-          ...Typography.subtitle,
-          color: Colors.BLACK,
-          fontSize: Dimensions.FONT_SIZE_M,
-        }}>
-        Toggle Expense/Income
-      </Text>
-      <ToggleSwitch
-        isOn={props.isIncome}
-        onColor={Colors.GREEN}
-        offColor={Colors.RED}
-        style={{width: Dimensions.SIZE_SM}}
-        size={'medium'}
-        onToggle={(value: boolean) => props?.setIsIncome(value)}
-      />
+          ...getContainerStyle(props?.isIncome),
+          ...styles.buttonContainer,
+          borderTopStartRadius: Dimensions.SIZE_SM,
+          borderBottomStartRadius: Dimensions.SIZE_SM,
+        }}
+        onPressOut={() => props?.setIsIncome(true)}>
+        <Text style={{...styles.text, ...getTextStyle(props?.isIncome)}}>
+          Income
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          ...getContainerStyle(!props?.isIncome),
+          ...styles.buttonContainer,
+          borderTopEndRadius: Dimensions.SIZE_SM,
+          borderBottomEndRadius: Dimensions.SIZE_SM,
+        }}
+        onPressOut={() => props?.setIsIncome(false)}>
+        <Text style={{...styles.text, ...getTextStyle(!props?.isIncome)}}>
+          Expense
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

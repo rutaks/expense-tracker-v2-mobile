@@ -13,6 +13,7 @@ const FinancialRecordListProvider = ({children}) => {
   >();
   const [isLoadingInitially, setIsLoadingInitially] = useState(false);
   const [isAddingSuccess, setIsAddingSuccess] = useState(false);
+  const [isAddingLoading, setIsAddingLoading] = useState(false);
 
   /**
    * Retreives all financial records in db
@@ -29,8 +30,10 @@ const FinancialRecordListProvider = ({children}) => {
    * @param record
    */
   const addRecord = async (record: FinancialRecord) => {
+    setIsAddingLoading(true);
     await FinancialRecordDal.create(record);
     setFinancialRecords((recordArr) => [record, ...recordArr]);
+    setIsAddingLoading(false);
     setIsAddingSuccess(true);
     setIsAddingSuccess(false);
   };
@@ -43,6 +46,7 @@ const FinancialRecordListProvider = ({children}) => {
     addRecord,
     isAddingSuccess,
     setIsAddingSuccess,
+    isAddingLoading,
   };
 
   return (

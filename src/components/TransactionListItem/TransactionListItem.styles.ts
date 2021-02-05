@@ -18,11 +18,15 @@ export const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'column',
+    flex: 1,
   },
   description: {
     ...Typography.description,
+    paddingLeft: Dimensions.SIZE_L,
     color: Colors.BLACK,
     alignSelf: 'flex-end',
+    textAlign: 'right',
+    flex: 1,
   },
   date: {
     ...Typography.body,

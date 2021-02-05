@@ -2,9 +2,9 @@ import React from 'react';
 import {View, FlatList} from 'react-native';
 import {TransactionListItem} from '..';
 import FinancialRecord from '../../models/financial-record.model';
-import {Dimensions} from '../../styles';
 import DataLoadingView from '../DataLoadingView';
 import NoDataView from '../NoDataView';
+import {styles} from './TransactionList.styles';
 
 /**
  * Function component representing transaction list
@@ -32,11 +32,7 @@ const TransactionList = (props: {
   }
 
   return (
-    <View
-      style={{
-        paddingLeft: Dimensions.SIZE_L,
-        paddingRight: Dimensions.SIZE_L,
-      }}>
+    <View style={styles.container}>
       <FlatList
         data={props?.items}
         keyExtractor={(_, index) => index.toString()}
