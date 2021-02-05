@@ -45,7 +45,11 @@ const AmountInputField = ({
         ]}>
         <TextInput
           {...rest}
-          value={numberWithCommas(actualAmount)}
+          value={
+            rest?.defaultValue
+              ? numberWithCommas(rest?.defaultValue)
+              : numberWithCommas(actualAmount)
+          }
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           onChangeText={(value: any) => {
