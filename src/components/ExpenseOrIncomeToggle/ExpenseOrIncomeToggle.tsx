@@ -4,7 +4,7 @@ import {Dimensions} from '../../styles';
 import {styles} from './ExpenseOrIncomeToggle.styles';
 
 const ExpenseOrIncomeToggle = (props: {
-  error: string;
+  error?: string;
   isIncome?: boolean;
   setIsIncome: (val: boolean) => any;
 }) => {
