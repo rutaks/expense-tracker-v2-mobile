@@ -2,6 +2,13 @@
 
 >  A user friendly expense/income tracking application
 
+
+<img src="./previews/screen-1.gif">
+<img src="./previews/screen-2.gif">
+<img src="./previews/screen-3.gif">
+<img src="./previews/screen-4.gif">
+
+
 ## Requirements
 
 - Android SDK Platform 29
