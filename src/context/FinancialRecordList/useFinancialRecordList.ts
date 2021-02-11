@@ -1,11 +1,13 @@
 import {useContext} from 'react';
 
-import FinancialRecordListContext from './FinancialRecordListContext';
+import FinancialRecordListContext, {
+  FinancialRecordListContextType,
+} from './FinancialRecordListContext';
 
 /**
  * Context Hook holding financial record list manipulation
  */
-const useFinancialRecordList = () => {
+const useFinancialRecordList = (): FinancialRecordListContextType => {
   const context = useContext(FinancialRecordListContext);
   if (context === undefined) {
     throw new Error(

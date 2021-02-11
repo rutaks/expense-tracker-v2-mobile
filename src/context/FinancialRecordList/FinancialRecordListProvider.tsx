@@ -38,6 +38,21 @@ const FinancialRecordListProvider = ({children}) => {
     setIsAddingSuccess(false);
   };
 
+  /**
+   * Removes record from db and current list
+   * @param id
+   */
+  const removeRecord = async (id: number) => {
+    try {
+      await FinancialRecordDal.remove(id);
+      setFinancialRecords((records) =>
+        records.filter((record) => record.id !== id),
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const contextValue = {
     financialRecords,
     findAllFinancialRecords,
@@ -47,6 +62,7 @@ const FinancialRecordListProvider = ({children}) => {
     isAddingSuccess,
     setIsAddingSuccess,
     isAddingLoading,
+    removeRecord,
   };
 
   return (
