@@ -1,4 +1,5 @@
 import {getRepository} from 'typeorm/browser';
+import FinancialRecordType from '../enums/financial-record-type.enum';
 import FinancialRecord from '../models/financial-record.model';
 import {sortByDueDate} from '../utils/date.util';
 
@@ -66,6 +67,40 @@ class FinancialRecordDal {
     const repo = getRepository(FinancialRecord);
     const {affected} = await repo.delete({});
     return affected;
+  }
+
+  /**
+   * Queries the sum of all incomes recorded
+   */
+  static async getTotalIncome(): Promise<number> {
+    const repo = getRepository(FinancialRecord);
+    const {sum}: {sum: number} = await repo
+      .createQueryBuilder('record')
+      .select('SUM(record.amount)', 'sum')
+      .where('record.type = :type', {type: FinancialRecordType.INCOME})
+      .getRawOne();
+
+    return sum;
+  }
+
+  /**
+   * Queries the sum of all expenses recorded
+   */
+  static async getTotalExpense(): Promise<number> {
+    const repo = getRepository(FinancialRecord);
+    const {sum} = await repo
+      .createQueryBuilder('record')
+      .select('SUM(record.amount)', 'sum')
+      .where('record.type = :type', {type: FinancialRecordType.EXPENSE})
+      .getRawOne();
+    return sum;
+  }
+
+  /**
+   * Makes the difference of all incomes and expenses recorded
+   */
+  static async getBalance(): Promise<number> {
+    return (await this.getTotalIncome()) - (await this.getTotalExpense());
   }
 }
 
