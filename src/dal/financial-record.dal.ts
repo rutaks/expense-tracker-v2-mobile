@@ -63,7 +63,7 @@ class FinancialRecordDal {
   /**
    * Removes FinancialRecords from db
    */
-  static async removeFinancialRecords(): Promise<any> {
+  static async removeAll(): Promise<any> {
     const repo = getRepository(FinancialRecord);
     const {affected} = await repo.delete({});
     return affected;
