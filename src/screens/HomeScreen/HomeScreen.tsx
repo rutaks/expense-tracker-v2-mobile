@@ -25,9 +25,13 @@ const HomeScreen = () => {
 
   useEffect(() => {
     financialRecordListHook.findAllFinancialRecords();
-    getTransactionSumsHook.getBalance();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    getTransactionSumsHook.getBalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [financialRecordListHook.financialRecords]);
 
   const openFinancialRecordModal = () => {
     if (financialRecordModalRef) {

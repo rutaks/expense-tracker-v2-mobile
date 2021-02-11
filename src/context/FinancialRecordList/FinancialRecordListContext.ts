@@ -10,6 +10,7 @@ export type FinancialRecordListContextType = {
   isAddingSuccess?: boolean;
   setIsAddingSuccess?: React.Dispatch<React.SetStateAction<boolean>>;
   isAddingLoading?: boolean;
+  removeRecord?: (id: number) => any;
 };
 
 const FinancialRecordListContext = React.createContext<
